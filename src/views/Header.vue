@@ -13,6 +13,9 @@
           <li class="nav-item">
             <router-link :to="{name:'blog'}" class="nav-link"> Blog</router-link>
           </li>
+          <li class="nav-item">
+            <router-link :to="{name:'light'}" class="nav-link"> LightBox</router-link>
+          </li>
         </ul>
          <span class="navbar-text">
       <slot name="firstSlot" ></slot>
