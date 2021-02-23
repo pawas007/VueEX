@@ -4,7 +4,7 @@
       <template #firstSlot>
         Nav BAR SLOT
       </template>
-    </Header>
+     </Header>
   </div>
 </template>
 
@@ -13,6 +13,7 @@ import Header from "@/views/Header";
 
 export default {
   name: "App",
+   props:['buttonName'],
   components: {
     Header
   },

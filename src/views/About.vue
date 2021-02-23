@@ -1,10 +1,9 @@
 <template>
   <div >
 
-    <h4 ref="abouttitle" class="h4">About title</h4>
-    <Carosel/>
-    <hr class="m-3">
-    <vue-upload-multiple-image
+
+
+ <vue-upload-multiple-image
         @upload-success="uploadImageSuccess"
         @before-remove="beforeRemove"
         @edit-image="editImage"
@@ -20,7 +19,7 @@
 
 <script>
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
-import Carosel from "@/views/Carosel";
+
 export default {
   name: 'about',
   data () {
@@ -30,7 +29,7 @@ export default {
   },
   components: {
     VueUploadMultipleImage,
-    Carosel
+
   },
   methods: {
     uploadImageSuccess(formData, index, fileList) {
