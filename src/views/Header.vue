@@ -13,7 +13,7 @@
           </li>
           <li class="nav-item">
             <router-link :to="{ name: 'blog' }" class="nav-link">
-              Blog</router-link
+              VueX</router-link
             >
           </li>
           <li class="nav-item">
@@ -22,15 +22,19 @@
             >
           </li>
         </ul>
-  
-        <exdata name="Share"  />
+
+        <exdata name="Share" />
         <span class="navbar-text">
           <slot name="firstSlot"></slot>
         </span>
       </div>
     </nav>
 
-    <router-view></router-view>
+    <div class="py-5">
+      <div class="container">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,12 +45,12 @@ export default {
   name: "Header",
   components: {
     exdata,
-  },methods:{
-     shareMe: function() {
+  },
+  methods: {
+    shareMe: function () {
       console.log("share");
-    }
-
-  }
+    },
+  },
 };
 </script>
 

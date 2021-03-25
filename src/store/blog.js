@@ -28,8 +28,10 @@ export default {
             state.posts.unshift(newPost)
         },
 
-        removePost(state , itemIndex){
-            state.posts.splice(itemIndex,itemIndex)
+        removePost(state , id){
+            state.posts.splice(id,1)
+
+            console.log(id)
         }
     },
 

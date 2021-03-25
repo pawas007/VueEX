@@ -1,38 +1,64 @@
 <template>
   <div>
 
+    <h4 class="h4">Count: {{ postCount }}</h4>
 
-    <h4 class="h4">get with id </h4>
-    <hr>
-    <h4 class="h4"> Count: {{ postCount }}</h4>
-    <div class="show_posts d-flex mt-3">
-      <input class="form-text mr-2 " type="number" v-model="myLimit">
-      <button class="btn btn-warning" v-on:click="getAnother(myLimit)">Get post with limit</button>
+ <div class="form-group">
+      <label for="exampleInputEmail1">Count limit:</label>
+      <input
+      type="number"
+        class="form-control"
+      v-model="myLimit"/>
+  
     </div>
-    <hr>
+ <button class="btn btn-primary" v-on:click="getAnother(myLimit)">
+        Get post with limit
+      </button>
+   
+    <hr />
     <h3 class="h3">Add post</h3>
-    <div class="addpost d-flex mt-3"><input type="text" class="form-text mr-2" placeholder="title" v-model="title">
-      <input type="text" class="form-text mr-2" placeholder="Text" v-model="text">
-      <button class="btn btn-warning" v-on:click="addPost">Add</button>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Title</label>
+      <input
+        type="tetx"
+        class="form-control"
+        v-model="title"
+        aria-describedby="emailHelp"
+        placeholder="Title"
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >We'll never share your title with anyone else.</small
+      >
     </div>
 
+    <div class="form-group">
+      <label for="exampleInputEmail1">Content</label>
+      <input
+        type="tetx"
+        class="form-control"
+        v-model="text"
+        aria-describedby="emailHelp"
+        placeholder="Title"
+      />
+    </div>
 
-    <div v-for="(post, index) in allPosts" :key="index" class="card">
-      <div class="card-header">
-        {{ post.id }} | {{ post.title }}
-      </div>
+    <button class="btn btn-primary" v-on:click="addPost">Add</button>
+
+    <div v-for="(post, index) in allPosts" :key="index" class="card m-0 my-4">
+      <div class="card-header">Post id:{{ post.id }} |<p class="ml-2"></p> Title: {{ post.title }} <p class="ml-2">Post index: {{index}}</p> </div>
       <div class="card-body">
         <p class="card-text">{{ post.body }}</p>
-        {{ index }}
-        <a href="#" class="btn btn-primary" v-on:click="removePost(index)">Remove post</a>
-
+         <a href="#" class="btn btn-primary" v-on:click="removePostFront(index)"
+          >Remove post</a
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {mapGetters, mapActions, mapMutations} from 'vuex'
+import { mapGetters, mapActions, mapMutations } from "vuex";
 
 export default {
   name: "blog",
@@ -41,16 +67,12 @@ export default {
       limit: 4,
       title: "",
       text: "",
-      myLimit:2,
-
-
-
-    }
+      myLimit: null,
+    };
   },
 
   computed: {
-    ...mapGetters(['allPosts', 'postCount']),
-
+    ...mapGetters(["allPosts", "postCount"]),
   },
   // получаємо дані з vuex
 
@@ -58,37 +80,31 @@ export default {
     ...mapActions(["fetchPosts"]),
     getAnother: function (myLimit) {
       if (!myLimit) {
-        alert('ENTER LIMIT OF POSTS')
+        alert("ENTER LIMIT OF POSTS");
       } else {
-        this.limit = myLimit
-        this.fetchPosts(this.limit)
+        this.limit = myLimit;
+        this.fetchPosts(this.limit);
       }
     },
-    ...mapMutations(['addNewPost', 'removePost']),
+    ...mapMutations(["addNewPost", "removePost"]),
 
     addPost: function () {
       this.addNewPost({
         title: this.title,
         body: this.text,
-        id: Date.now()
-      })
-      this.title = this.text = ''
+        id: Date.now(),
+      });
+      this.title = this.text = "";
     },
-    removePost: function (itemIndex) {
-
-      console.log(itemIndex)
-      this.removePost(itemIndex)
-
-
-    }
-
-
+    removePostFront: function (id) {
+      this.removePost(id);
+    },
   },
   async mounted() {
-    this.fetchPosts(this.limit)
-  }
+    this.fetchPosts(this.limit);
+  },
   // визиваємо функцію action vuex
-}
+};
 </script>
 
 <style scoped lang="scss">
