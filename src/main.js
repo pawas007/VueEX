@@ -10,10 +10,10 @@ Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 
-import Vuelidate from 'vuelidate'
+
 import Notifications from 'vue-notification'
 
-Vue.use(Vuelidate)
+Vue.use( Notifications)
 
 
 new Vue({
@@ -21,6 +21,6 @@ new Vue({
     bootstrap,
     store,
     Lightbox,
-    Notifications ,
+    
        render: h => h(App) 
 }).$mount('#app')

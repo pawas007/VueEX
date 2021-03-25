@@ -21,6 +21,12 @@
               LightBox</router-link
             >
           </li>
+
+          <li class="nav-item">
+            <router-link :to="{ name: 'alerts' }" class="nav-link">
+              Notification</router-link
+            >
+          </li>
         </ul>
 
         <exdata name="Share" />

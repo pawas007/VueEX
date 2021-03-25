@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <notifications/>
     <Header>
       <template #firstSlot>
         Nav BAR SLOT
